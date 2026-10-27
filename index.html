@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Python Syntax: Beginner to Advanced</title>
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+
+  /* dark theme (default) */
+  --bg:#1e1e2e;
+  --bg2:#181825;
+  --fg:#cdd6f4;
+  --fg2:#a6adc8;
+  --border:#313244;
+  --pre-bg:#181825;
+  --level-bg:#cba6f7;
+  --level-fg:#1e1e2e;
+  --accent:#89b4fa;
+  --toggle-bg:#313244;
+  --toggle-fg:#cdd6f4;
+}
+html[data-theme="light"]{
+  --bg:#eff1f5;
+  --bg2:#e6e9ef;
+  --fg:#4c4f69;
+  --fg2:#6c6f85;
+  --border:#bcc0cc;
+  --pre-bg:#e6e9ef;
+  --level-bg:#7c3aed;
+  --level-fg:#ffffff;
+  --accent:#1d4ed8;
+  --toggle-bg:#bcc0cc;
+  --toggle-fg:#4c4f69;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Georgia,"Times New Roman",serif;transition:background .25s,color .25s}
+
+/* theme toggle button */
+#theme-toggle{
+  position:fixed;top:14px;right:18px;z-index:999;
+  display:flex;align-items:center;gap:8px;
+  background:var(--toggle-bg);color:var(--toggle-fg);
+  border:1px solid var(--border);border-radius:999px;
+  padding:6px 14px;font-size:13px;font-family:inherit;cursor:pointer;
+  transition:background .25s,color .25s,border-color .25s;
+  white-space:nowrap;
+}
+#theme-toggle:hover{opacity:.85}
+#theme-toggle .icon{font-size:16px;line-height:1}
+
+.wrap{display:flex;max-width:1100px;margin:0 auto}
+nav{width:220px;flex:none;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto;padding:24px 16px;border-right:1px solid var(--border);font-size:14px;line-height:1.9;background:var(--bg2);transition:background .25s,border-color .25s}
+nav b{display:block;font-size:18px;margin-bottom:6px;color:var(--accent)}
+nav .lv{display:block;font-weight:700;margin-top:14px;border-bottom:1px solid var(--border);color:var(--accent)}
+nav a{display:block;color:var(--fg2);text-decoration:none;transition:color .15s}
+nav a:hover,nav a:focus-visible{color:var(--fg);text-decoration:underline}
+main{flex:1;min-width:0;padding:24px 28px 80px}
+h1{font-size:34px;margin:0 0 4px;color:var(--fg)}
+p.s{margin:0 0 28px;color:var(--fg2)}
+.level{margin:56px 0 24px;padding:10px 14px;background:var(--level-bg);color:var(--level-fg);font-size:26px;font-weight:700;border-radius:6px;transition:background .25s,color .25s}
+.level small{display:block;font-size:14px;font-weight:400}
+section{margin-bottom:40px}
+h2{font-size:21px;margin:0 0 10px;padding-bottom:4px;border-bottom:1px solid var(--border);color:var(--fg)}
+h3{font-size:15px;margin:16px 0 4px;color:var(--fg2)}
+pre{margin:0 0 8px;padding:12px 14px;border:1px solid var(--border);border-radius:4px;overflow-x:auto;font:13.5px/1.55 ui-monospace,Menlo,Consolas,monospace;tab-size:4;background:var(--pre-bg);color:var(--fg);transition:background .25s,border-color .25s}
+@media(max-width:720px){
+  .wrap{display:block}
+  nav{position:static;width:auto;height:auto;border:0;border-bottom:1px solid var(--border)}
+  nav a{display:inline-block;margin-right:12px}
+  main{padding:20px 16px 60px}
+  #theme-toggle{top:10px;right:10px;padding:5px 10px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<button id="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+  <span class="icon">🌙</span><span class="label">Dark</span>
+</button>
+<div class="wrap">
+<nav id="nav"><b>Python</b></nav>
+<main>
+<h1>Python Syntax</h1>
+<p class="s">Core language only. Beginner, then Intermediate, then Advanced.</p>
+
+<div class="level" id="beginner">Beginner<small>Basics you need before anything else</small></div>
+
+<section><h2>Basics &amp; variables</h2>
+<pre># comment
+"""docstring / multi-line string"""
+x = 10
+a, b = 1, 2
+a = b = 0
+a, b = b, a                 # swap
+first, *rest = [1, 2, 3]    # unpacking
+x: int = 5                  # annotation
+total = 1 + 2 + \
+        3                   # line continuation
+a = 1; b = 2                # two statements
+print("Hello")              # indentation = 4 spaces per block</pre></section>
+
+<section><h2>Data types</h2>
+<pre>42  0b101  0o17  0xFF  1_000      # int
+3.14  1e-3  float("inf")            # float
+3 + 4j                              # complex
+True  False                         # bool
+None                                # NoneType
+"text"  'text'  """multi"""  r"raw\n"  b"bytes"
+type(x)  isinstance(x, int)  isinstance(x, (int, float))
+int("5")  float("1.5")  str(5)  bool(0)  list("ab")  tuple([1])  set([1])
+chr(65)  ord("A")  hex(255)  bin(5)  oct(8)</pre></section>
+
+<section><h2>Operators</h2>
+<pre>+  -  *  /  //  %  **            # arithmetic
+==  !=  &lt;  &gt;  &lt;=  &gt;=  1 &lt; x &lt; 10   # comparison
+and  or  not                       # logical
+is  is not  in  not in             # identity, membership
+&amp;  |  ^  ~  &lt;&lt;  &gt;&gt;                 # bitwise
++=  -=  *=  /=  //=  %=  **=       # augmented
+y = a if cond else b              # conditional expression</pre></section>
+
+<section><h2>Strings</h2>
+<pre>s = "hello"
+s[0]  s[-1]  s[1:3]  s[::2]  s[::-1]
+s + "x"  s * 3  "e" in s  len(s)
+f"{name}  {x:.2f}  {x:&gt;10}  {n:,}  {x!r}  {x=}"
+"{} {}".format(1, 2)    "%s %d" % ("a", 1)
+\n  \t  \\  \'  \"  \xhh  \uXXXX
+
+s.upper() s.lower() s.title() s.strip() s.split(",") ",".join(L)
+s.replace("a","b") s.find("x") s.count("a") s.startswith("h") s.endswith("o")
+s.isalpha() s.isdigit() s.isalnum() s.center(10) s.zfill(5) s.splitlines()</pre></section>
+
+<section><h2>Lists, tuples, sets, dicts</h2>
+<pre># list (mutable)
+l = [1, 2, 3]
+l[0]  l[-1]  l[1:]  l.append(4)  l.extend([5])  l.insert(0, 0)
+l.remove(2)  l.pop()  l.index(3)  l.count(1)  l.sort()  l.reverse()  del l[0]
+
+# tuple (immutable)
+t = (1, 2)   t = 1,   t = ()
+
+# set (unique)
+s = {1, 2}   s.add(3)   s.discard(1)   a | b   a &amp; b   a - b   a ^ b
+
+# dict
+d = {"a": 1, "b": 2}
+d["a"]  d["c"] = 3  del d["a"]  "a" in d
+d.get("x", 0)  d.keys()  d.values()  d.items()  d.update(o)  d.pop("a")</pre></section>
+
+<section><h2>Conditions &amp; loops</h2>
+<pre>if x &gt; 0:
+    ...
+elif x == 0:
+    ...
+else:
+    ...
+
+for i in range(5): ...
+for i, v in enumerate(L): ...
+for a, b in zip(A, B): ...
+for k, v in d.items(): ...
+
+while cond:
+    if a: continue
+    if b: break
+else:               # runs if loop did not break
+    ...
+pass</pre></section>
+
+<section><h2>Functions (basic)</h2>
+<pre>def add(a, b=2):
+    """docstring"""
+    return a + b
+
+add(1)  add(1, b=5)
+def pair(): return 1, 2
+x, y = pair()
+square = lambda n: n * n</pre></section>
+
+<section><h2>Input, output &amp; files</h2>
+<pre>name = input("Name: ")
+print("a", "b", sep="-", end="")
+with open("f.txt", "r", encoding="utf-8") as f:   # modes: r w a x b +
+    data = f.read()        # f.readline()  f.readlines()
+with open("f.txt", "w") as f:
+    f.write("text")</pre></section>
+
+<section><h2>Exceptions (basic)</h2>
+<pre>try:
+    x = int("a")
+except ValueError as e:
+    print(e)
+else:
+    ...             # no error
+finally:
+    ...             # always runs
+raise ValueError("bad")
+assert x &gt; 0, "must be positive"</pre></section>
+
+<div class="level" id="intermediate">Intermediate<small>OOP, functional tools and structure</small></div>
+
+<section><h2>Comprehensions</h2>
+<pre>[x * 2 for x in range(5) if x % 2]
+{x for x in "hello"}
+{k: v for k, v in d.items()}
+(x * x for x in range(5))              # generator expression
+[(a, b) for a in A for b in B]
+[x if x &gt; 0 else 0 for x in L]</pre></section>
+
+<section><h2>Functions (arguments &amp; scope)</h2>
+<pre>def f(a, b=2, *args, c, d=4, **kwargs): ...
+def g(a, b, /, c, *, d): ...           # / positional-only, * keyword-only
+f(*[1, 2], **{"c": 3})
+def h(x: int, y: str = "a") -&gt; bool: ...
+
+def outer():
+    n = 0
+    def inner():
+        nonlocal n
+        n += 1
+        return n
+    return inner
+
+counter = 0
+def inc():
+    global counter
+    counter += 1
+
+map(f, L)  filter(f, L)  sorted(L, key=lambda x: x[1], reverse=True)
+any(L)  all(L)  min(L, key=len)  sum(L)  zip(A, B, strict=True)</pre></section>
+
+<section><h2>OOP: classes &amp; objects</h2>
+<pre>class Animal:
+    count = 0                       # class attribute
+
+    def __init__(self, name):
+        self.name = name            # instance attribute
+        self._protected = 1         # convention
+        self.__private = 2          # name mangled
+
+    def speak(self):                # instance method
+        return f"{self.name} makes a sound"
+
+    def __repr__(self):  return f"Animal({self.name!r})"
+    def __str__(self):   return self.name
+
+    @classmethod
+    def create(cls, name):  return cls(name)
+
+    @staticmethod
+    def helper(x):  return x * 2
+
+    @property
+    def upper(self):  return self.name.upper()
+
+    @upper.setter
+    def upper(self, v):  self.name = v.lower()
+
+a = Animal("Rex")
+a.name   a.speak()   Animal.count   Animal.create("Tom")
+hasattr(a, "x")  getattr(a, "x", None)  setattr(a, "x", 1)  delattr(a, "x")
+vars(a)  dir(a)  type(a)  a.__class__.__name__</pre></section>
+
+<section><h2>OOP: inheritance &amp; polymorphism</h2>
+<pre>class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)      # call parent
+        self.breed = breed
+
+    def speak(self):                # override
+        return f"{self.name} barks"
+
+class Flyer:  ...
+class Bird(Animal, Flyer): ...      # multiple inheritance
+
+isinstance(d, Animal)   issubclass(Dog, Animal)
+Bird.__mro__                        # method resolution order
+
+# abstract class
+from abc import ABC, abstractmethod
+class Shape(ABC):
+    @abstractmethod
+    def area(self): ...</pre></section>
+
+<section><h2>OOP: dataclasses &amp; enums</h2>
+<pre>from dataclasses import dataclass, field
+@dataclass(frozen=True, order=True, slots=True)
+class Point:
+    x: int
+    y: int = 0
+    tags: list = field(default_factory=list)
+
+from enum import Enum, auto
+class Color(Enum):
+    RED = auto()
+    BLUE = 2
+Color.RED.name   Color.RED.value   Color(2)</pre></section>
+
+<section><h2>Modules &amp; packages</h2>
+<pre>import math
+import math as m
+from math import sqrt, pi
+from math import sqrt as s
+from . import sibling            # relative import
+from .pkg import name
+__all__ = ["public_name"]
+if __name__ == "__main__":
+    main()</pre></section>
+
+<section><h2>Exceptions (custom &amp; chaining)</h2>
+<pre>class AppError(Exception):
+    def __init__(self, msg, code):
+        super().__init__(msg)
+        self.code = code
+
+try:
+    ...
+except (TypeError, KeyError) as e:
+    raise AppError("failed", 1) from e   # chain
+except Exception:
+    raise                                # re-raise
+raise ValueError("x") from None</pre></section>
+
+<section><h2>Iterators, generators &amp; context managers</h2>
+<pre>class Count:
+    def __init__(self, n): self.n, self.i = n, 0
+    def __iter__(self):  return self
+    def __next__(self):
+        if self.i &gt;= self.n: raise StopIteration
+        self.i += 1
+        return self.i
+
+def gen():
+    yield 1
+    yield 2
+    yield from other()
+
+it = iter(L)   next(it)   next(it, None)
+
+class Ctx:
+    def __enter__(self):  return self
+    def __exit__(self, exc_type, exc, tb):  return False
+
+with Ctx() as c: ...
+with open("a") as a, open("b") as b: ...
+with (open("a") as a, open("b") as b): ...   # 3.10+</pre></section>
+
+<section><h2>Decorators</h2>
+<pre>def deco(fn):
+    def wrapper(*args, **kwargs):
+        return fn(*args, **kwargs)
+    return wrapper
+
+@deco
+def work(): ...
+
+def repeat(n):                    # decorator with arguments
+    def d(fn):
+        def w(*a, **k):
+            for _ in range(n): fn(*a, **k)
+        return w
+    return d
+
+@repeat(3)
+def hi(): ...</pre></section>
+
+<section><h2>match / case (3.10+)</h2>
+<pre>match command:
+    case "go":                    ...
+    case "stop" | "halt":         ...
+    case [x, y]:                  ...
+    case [first, *rest]:          ...
+    case {"type": "a", "v": v}:   ...
+    case Point(x=0, y=0):         ...
+    case int() | float() as n if n &gt; 0:  ...
+    case _:                       ...</pre></section>
+
+<div class="level" id="advanced">Advanced<small>Python's object model, async and metaprogramming</small></div>
+
+<section><h2>Dunder (magic) methods</h2>
+<pre>__new__ __init__ __del__ __repr__ __str__ __bytes__ __format__
+__eq__ __ne__ __lt__ __le__ __gt__ __ge__ __hash__ __bool__
+__add__ __sub__ __mul__ __matmul__ __truediv__ __floordiv__ __mod__ __pow__
+__and__ __or__ __xor__ __lshift__ __rshift__ __neg__ __pos__ __abs__ __invert__
+__radd__ (r-variants)   __iadd__ (i-variants)
+__int__ __float__ __index__ __round__ __trunc__ __floor__ __ceil__
+__len__ __getitem__ __setitem__ __delitem__ __contains__ __iter__ __next__ __reversed__
+__missing__ __call__ __enter__ __exit__
+__getattr__ __getattribute__ __setattr__ __delattr__ __dir__
+__copy__ __deepcopy__ __getstate__ __setstate__ __reduce__
+__class_getitem__ __init_subclass__ __match_args__ __slots__
+
+class Vec:
+    def __init__(self, x, y): self.x, self.y = x, y
+    def __add__(self, o):  return Vec(self.x + o.x, self.y + o.y)
+    def __eq__(self, o):   return (self.x, self.y) == (o.x, o.y)
+    def __hash__(self):    return hash((self.x, self.y))
+    def __len__(self):     return 2
+    def __getitem__(self, i):  return (self.x, self.y)[i]
+    def __call__(self):    return "called"</pre></section>
+
+<section><h2>Descriptors &amp; __slots__</h2>
+<pre>class Positive:
+    def __set_name__(self, owner, name):  self.name = "_" + name
+    def __get__(self, obj, objtype=None):
+        return self if obj is None else getattr(obj, self.name)
+    def __set__(self, obj, value):
+        if value &lt;= 0: raise ValueError
+        setattr(obj, self.name, value)
+    def __delete__(self, obj):  delattr(obj, self.name)
+
+class Item:
+    price = Positive()
+    __slots__ = ("_price",)       # no per-instance __dict__</pre></section>
+
+<section><h2>Metaclasses &amp; class creation</h2>
+<pre>class Meta(type):
+    def __new__(mcs, name, bases, ns, **kw):
+        return super().__new__(mcs, name, bases, ns)
+    def __call__(cls, *a, **k):
+        return super().__call__(*a, **k)
+
+class A(metaclass=Meta): ...
+
+Dyn = type("Dyn", (object,), {"x": 1, "f": lambda self: 1})   # dynamic class
+
+class Base:
+    def __init_subclass__(cls, **kw):  super().__init_subclass__(**kw)
+
+def class_deco(cls):  cls.tag = 1;  return cls
+@class_deco
+class B: ...</pre></section>
+
+<section><h2>Async / await</h2>
+<pre>async def fetch():
+    await something()
+    return 1
+
+async def agen():
+    yield 1
+
+async for x in agen(): ...
+async with ctx as c: ...
+[x async for x in agen()]
+
+class AC:
+    async def __aenter__(self): ...
+    async def __aexit__(self, *a): ...
+    def __aiter__(self): ...
+    async def __anext__(self): ...</pre></section>
+
+<section><h2>Generators (two-way)</h2>
+<pre>def acc():
+    total = 0
+    while True:
+        x = yield total        # receives sent value
+        total += x
+
+g = acc(); next(g)
+g.send(5)   g.throw(ValueError)   g.close()
+def d():
+    r = yield from sub()       # delegate and capture return
+    return r</pre></section>
+
+<section><h2>Exception groups (3.11+)</h2>
+<pre>try:
+    raise ExceptionGroup("many", [ValueError(1), TypeError(2)])
+except* ValueError as eg:
+    ...
+except* TypeError as eg:
+    ...
+e.add_note("extra context")
+e.__cause__   e.__context__   e.__traceback__</pre></section>
+
+<section><h2>Type hints &amp; generics</h2>
+<pre>def f(a: list[int], b: dict[str, int] | None = None) -&gt; tuple[int, ...]: ...
+from typing import Any, Optional, Union, Callable, Literal, Final
+from typing import TypedDict, Protocol, Generic, TypeVar, ClassVar, Self, Annotated
+
+T = TypeVar("T")
+class Box(Generic[T]): ...
+class Greets(Protocol):
+    def greet(self) -&gt; str: ...
+
+def first[T](xs: list[T]) -&gt; T: ...    # 3.12+
+class Stack[T]: ...
+type Alias = list[int]                  # 3.12+
+def g(*args: int, **kwargs: str) -&gt; None: ...</pre></section>
+
+<section><h2>Dynamic features</h2>
+<pre>eval("1 + 2")   exec("x = 1")   compile(src, "f", "exec")
+globals()   locals()   id(x)   hash(x)   callable(f)
+getattr(obj, "name")   __import__("os")
+f.__name__  f.__doc__  f.__annotations__  f.__defaults__  f.__code__
+del x                          # remove name binding
+breakpoint()                   # debugger</pre></section>
+
+<section><h2>Keywords</h2>
+<pre># hard keywords
+False None True and as assert async await break class continue def del elif else
+except finally for from global if import in is lambda nonlocal not or pass raise
+return try while with yield
+# soft keywords
+match case _ type</pre></section>
+</main>
+</div>
+<script>
+// nav builder
+var n=document.getElementById("nav");
+document.querySelectorAll(".level,section").forEach(function(e){
+var a=document.createElement("a");
+if(e.classList.contains("level")){a.className="lv";a.href="#"+e.id;a.textContent=e.childNodes[0].textContent;}
+else{e.id=e.id||"s"+Math.random().toString(36).slice(2,7);a.href="#"+e.id;a.textContent=e.querySelector("h2").textContent;}
+n.appendChild(a);
+});
+
+// theme toggle
+var btn = document.getElementById("theme-toggle");
+var icon = btn.querySelector(".icon");
+var label = btn.querySelector(".label");
+
+function applyTheme(theme) {
+  if (theme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+    icon.textContent = "☀️";
+    label.textContent = "Light";
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    icon.textContent = "🌙";
+    label.textContent = "Dark";
+  }
+  localStorage.setItem("theme", theme);
+}
+
+function toggleTheme() {
+  var current = document.documentElement.getAttribute("data-theme");
+  applyTheme(current === "light" ? "dark" : "light");
+}
+
+// load saved preference, default to dark
+applyTheme(localStorage.getItem("theme") || "dark");
+</script>
+</body>
+</html>
