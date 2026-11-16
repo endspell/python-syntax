@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Python Syllabus: Beginner to Advanced</title>
+<style>
+:root{--bg:#fff;--fg:#000;--mute:#555;--line:#000;--soft:#f2f2f2;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--fg:#fff;--mute:#aaa;--line:#fff;--soft:#161616;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--fg:#fff;--mute:#aaa;--line:#fff;--soft:#161616;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 Georgia,"Times New Roman",serif}
+.wrap{max-width:820px;margin:0 auto;padding:24px 20px 80px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:2px solid var(--line)}
+.brand{font:700 15px ui-monospace,Menlo,Consolas,monospace}
+button#t{font:600 14px system-ui,sans-serif;background:var(--fg);color:var(--bg);border:2px solid var(--fg);padding:8px 14px;border-radius:999px;cursor:pointer}
+button#t:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+h1{font:800 clamp(44px,12vw,92px)/.95 system-ui,Helvetica,Arial,sans-serif;letter-spacing:-.04em;margin:48px 0 20px}
+.lede{color:var(--mute);max-width:56ch;margin:0 0 28px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--line)}
+.facts div{padding:14px;border-right:2px solid var(--line);font:14px system-ui,sans-serif;color:var(--mute)}
+.facts div:last-child{border-right:0}
+.facts b{display:block;font-size:22px;color:var(--fg)}
+.phase{margin-top:64px}
+.phase h2{font:800 clamp(30px,7vw,44px)/1.05 system-ui,sans-serif;letter-spacing:-.03em;margin:0;padding:12px 16px;background:var(--fg);color:var(--bg)}
+.phase .meta{font:14px system-ui,sans-serif;color:var(--mute);margin:10px 0 18px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:16px 0;font:700 19px system-ui,sans-serif;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-weight:400;font-size:24px;line-height:1}
+details[open] summary::after{content:"\2212"}
+ul{margin:0 0 18px;padding-left:20px}
+li{margin:4px 0}
+code{font:.88em ui-monospace,Menlo,Consolas,monospace;background:var(--soft);padding:1px 5px;border:1px solid var(--mute)}
+.proj{background:var(--soft);border:2px solid var(--line);padding:14px 18px;margin-top:20px}
+.proj h3{font:700 16px system-ui,sans-serif;margin:0 0 6px}
+.proj p{margin:0}
+footer{margin-top:72px;padding-top:16px;border-top:2px solid var(--line);font:14px system-ui,sans-serif;color:var(--mute)}
+@media(max-width:520px){.facts{grid-template-columns:1fr}.facts div{border-right:0;border-bottom:2px solid var(--line)}.facts div:last-child{border-bottom:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><span class="brand">python.syllabus</span><button id="t" type="button" aria-label="Toggle light and dark mode">Dark mode</button></header>
+
+<h1>Python, start to finish.</h1>
+<p class="lede">A complete Python-only course in three phases. No frameworks, no AI or ML. Just the language, its standard library, and the engineering habits around it.</p>
+<div class="facts"><div><b>3</b>phases</div><div><b>~28 weeks</b>full course</div><div><b>12</b>projects</div></div>
+
+<section class="phase">
+<h2>Phase 1: Beginner</h2>
+<p class="meta">6 to 8 weeks. Write and run your first programs.</p>
+<details open><summary>Getting started</summary><ul>
+<li>What Python is, installing it, the REPL, running scripts</li>
+<li>Code editors and IDEs (VS Code, PyCharm)</li>
+<li><code>pip</code> and virtual environments (<code>venv</code>)</li>
+<li>Comments, indentation, naming rules</li></ul></details>
+<details><summary>Core syntax</summary><ul>
+<li>Variables, numbers, strings, booleans, <code>None</code></li>
+<li>Type conversion and dynamic typing</li>
+<li>Arithmetic, comparison, logical, bitwise, and assignment operators</li>
+<li>Input and output, f-strings, string formatting</li></ul></details>
+<details><summary>Control flow</summary><ul>
+<li><code>if</code> / <code>elif</code> / <code>else</code>, <code>match</code> statements</li>
+<li><code>for</code> and <code>while</code> loops, <code>range</code>, <code>enumerate</code>, <code>zip</code></li>
+<li><code>break</code>, <code>continue</code>, <code>pass</code>, loop <code>else</code></li></ul></details>
+<details><summary>Data structures</summary><ul>
+<li>Strings: slicing, methods, immutability</li>
+<li>Lists, tuples, sets, dictionaries</li>
+<li>Mutability, copying (shallow vs deep), unpacking</li>
+<li>List, dict, and set comprehensions</li>
+<li>Sorting, searching, and common built-ins (<code>len</code>, <code>sum</code>, <code>min</code>, <code>max</code>, <code>any</code>, <code>all</code>)</li></ul></details>
+<details><summary>Functions</summary><ul>
+<li>Defining functions, return values, docstrings</li>
+<li>Positional, keyword, default, <code>*args</code>, <code>**kwargs</code></li>
+<li>Scope (LEGB), <code>global</code>, <code>nonlocal</code></li>
+<li>Lambda, <code>map</code>, <code>filter</code>, recursion</li></ul></details>
+<details><summary>Modules and files</summary><ul>
+<li>Imports, creating your own modules and packages</li>
+<li>Standard library tour: <code>math</code>, <code>random</code>, <code>datetime</code>, <code>os</code>, <code>sys</code>, <code>pathlib</code></li>
+<li>Reading and writing text, CSV, and JSON files</li>
+<li>Exceptions: <code>try</code>, <code>except</code>, <code>else</code>, <code>finally</code>, <code>raise</code></li></ul></details>
+<details><summary>Developer basics</summary><ul>
+<li>Command line essentials</li>
+<li>Git and GitHub: commit, branch, merge, pull request</li>
+<li>Reading tracebacks, debugging with <code>print</code> and <code>pdb</code></li>
+<li>PEP 8 and clean code habits</li></ul></details>
+<div class="proj"><h3>Projects</h3><p>Calculator, number guessing game, CLI to-do list saved to JSON, file organizer.</p></div>
+</section>
+
+<section class="phase">
+<h2>Phase 2: Intermediate</h2>
+<p class="meta">8 to 10 weeks. Write structured, reusable, tested code.</p>
+<details open><summary>Object-oriented programming</summary><ul>
+<li>Classes, objects, <code>__init__</code>, instance vs class attributes</li>
+<li>Methods: instance, <code>@classmethod</code>, <code>@staticmethod</code></li>
+<li>Inheritance, <code>super()</code>, multiple inheritance, MRO</li>
+<li>Encapsulation, <code>@property</code>, polymorphism, abstract classes (<code>abc</code>)</li>
+<li>Dunder methods: <code>__str__</code>, <code>__repr__</code>, <code>__eq__</code>, <code>__len__</code>, <code>__iter__</code></li>
+<li><code>dataclasses</code> and <code>enum</code></li></ul></details>
+<details><summary>Functional and iterator tools</summary><ul>
+<li>Iterables, iterators, and the iterator protocol</li>
+<li>Generators, <code>yield</code>, generator expressions</li>
+<li>Closures and decorators (with arguments)</li>
+<li><code>functools</code> (<code>lru_cache</code>, <code>partial</code>, <code>wraps</code>) and <code>itertools</code></li>
+<li>Context managers and the <code>with</code> statement</li></ul></details>
+<details><summary>Standard library in depth</summary><ul>
+<li><code>collections</code>: <code>Counter</code>, <code>defaultdict</code>, <code>deque</code>, <code>namedtuple</code></li>
+<li><code>re</code> regular expressions</li>
+<li><code>json</code>, <code>csv</code>, <code>pickle</code>, <code>shelve</code></li>
+<li><code>argparse</code>, <code>subprocess</code>, <code>shutil</code>, <code>glob</code></li>
+<li><code>datetime</code> and time zones with <code>zoneinfo</code></li>
+<li><code>sqlite3</code> for databases</li>
+<li><code>urllib</code> and <code>http.client</code></li>
+<li><code>logging</code></li></ul></details>
+<details><summary>Quality and tooling</summary><ul>
+<li>Type hints, <code>typing</code>, static checking with <code>mypy</code></li>
+<li>Unit testing with <code>unittest</code> and <code>pytest</code>, fixtures, mocking</li>
+<li>Linting and formatting (<code>ruff</code>, <code>black</code>)</li>
+<li>Project layout, <code>pyproject.toml</code>, requirements files</li>
+<li>Debugging with <code>pdb</code> and IDE debuggers</li></ul></details>
+<details><summary>Working with data in pure Python</summary><ul>
+<li>Parsing and generating CSV, JSON, XML</li>
+<li>Text processing and string algorithms</li>
+<li>Handling dates, money (<code>decimal</code>), and fractions</li>
+<li>Basic algorithms: sorting, searching, recursion, big-O</li>
+<li>Core data structures: stack, queue, linked list, tree, graph, heap</li></ul></details>
+<div class="proj"><h3>Projects</h3><p>Library management system (OOP), log file analyzer, command-line contact book with SQLite, text-based adventure game, tested utility package.</p></div>
+</section>
+
+<section class="phase">
+<h2>Phase 3: Advanced</h2>
+<p class="meta">12 to 16 weeks. Understand how Python works and make it fast, concurrent, and shippable.</p>
+<details open><summary>Python internals</summary><ul>
+<li>CPython, bytecode, the <code>dis</code> module</li>
+<li>Memory management, reference counting, garbage collection</li>
+<li>The GIL and what it means for performance</li>
+<li>Object model, <code>__slots__</code>, descriptors, attribute lookup</li>
+<li>Import system and module loading</li></ul></details>
+<details><summary>Advanced language features</summary><ul>
+<li>Metaclasses and class decorators</li>
+<li><code>__getattr__</code>, <code>__call__</code>, <code>__new__</code>, operator overloading</li>
+<li>Advanced decorators and decorator factories</li>
+<li>Generics, <code>Protocol</code>, <code>TypedDict</code>, <code>Literal</code>, <code>overload</code></li>
+<li>Structural pattern matching in depth</li>
+<li>Coroutines and the <code>yield from</code> mechanism</li></ul></details>
+<details><summary>Concurrency and parallelism</summary><ul>
+<li><code>threading</code>, locks, queues, thread pools</li>
+<li><code>multiprocessing</code>, process pools, shared memory</li>
+<li><code>concurrent.futures</code></li>
+<li><code>asyncio</code>: tasks, event loop, async iterators, <code>gather</code></li>
+<li>Choosing between threads, processes, and async</li>
+<li>Race conditions, deadlocks, thread safety</li></ul></details>
+<details><summary>Performance</summary><ul>
+<li>Profiling with <code>cProfile</code>, <code>timeit</code>, <code>tracemalloc</code></li>
+<li>Algorithmic and data-structure optimization</li>
+<li>Memory efficiency, generators, <code>array</code>, <code>memoryview</code></li>
+<li>Calling C code with <code>ctypes</code> and an intro to C extensions</li></ul></details>
+<details><summary>Networking and systems</summary><ul>
+<li>Sockets: TCP and UDP clients and servers</li>
+<li>Building a simple HTTP server with <code>http.server</code></li>
+<li>Working with the file system, processes, signals</li>
+<li>Serialization, compression (<code>zipfile</code>, <code>gzip</code>), <code>struct</code></li>
+<li>Cryptography basics: <code>hashlib</code>, <code>hmac</code>, <code>secrets</code></li></ul></details>
+<details><summary>Design and architecture</summary><ul>
+<li>SOLID principles, composition over inheritance</li>
+<li>Design patterns: singleton, factory, observer, strategy, adapter</li>
+<li>Clean code, refactoring, code review</li>
+<li>Error-handling strategies, custom exception hierarchies</li>
+<li>Documentation with docstrings and Sphinx</li></ul></details>
+<details><summary>Packaging and delivery</summary><ul>
+<li>Building and publishing packages (wheel, <code>build</code>, PyPI)</li>
+<li>Semantic versioning, changelogs</li>
+<li>Command-line tools with entry points</li>
+<li>Continuous integration with GitHub Actions</li>
+<li>Test coverage, property-based testing (<code>hypothesis</code>)</li></ul></details>
+<div class="proj"><h3>Capstone projects (pick 2 or 3)</h3><p>Multithreaded web crawler, async chat server over sockets, your own mini testing framework, a CLI tool published to PyPI, a task scheduler with persistence, an interpreter for a small language.</p></div>
+</section>
+
+<footer>Tip: finish each phase's projects before moving on. Reading builds familiarity; building builds skill.</footer>
+</div>
+<script>
+(function(){
+var r=document.documentElement,b=document.getElementById("t");
+function cur(){var a=r.getAttribute("data-theme");if(a)return a;return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
+function label(){b.textContent=cur()==="dark"?"Light mode":"Dark mode"}
+b.addEventListener("click",function(){r.setAttribute("data-theme",cur()==="dark"?"light":"dark");label()});
+label();
+})();
+</script>
+</body>
+</html>
